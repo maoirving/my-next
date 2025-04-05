@@ -1,17 +1,16 @@
 import Image from 'next/image'
 import { oxfordWords } from '@/files/oxford'
 import { targetWords } from '@/files/target'
+import Link from 'next/link'
 
 export default function English() {
-  const word = 'hello'
-  console.log('word:', word)
-
   const oxfordWordsSet = new Set(oxfordWords)
 
   const handledTargetWords = Array.from(new Set(targetWords.map(word => word.trim())))
 
   const differences = handledTargetWords.filter(word => !oxfordWordsSet.has(word))
   console.log('differences:', differences)
+
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -24,6 +23,7 @@ export default function English() {
           height={38}
           priority
         />
+        <Link href='/english/memorizing' className='hover:underline text-pink-500'>Memorize words</Link>
         <div>
           <div>
             <label className="font-bold text-pink-500 capitalize mr-2">Oxford:</label>
